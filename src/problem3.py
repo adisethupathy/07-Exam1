@@ -2,8 +2,8 @@
 Exam 1, problem 3.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.  March 2018.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Adi Sethupathy.  March 2018.
+"""  # done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -93,11 +93,22 @@ def problem3(rect, n, window):
       :type window:  rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function, TESTING each step as you go.
+    # done: 2. Implement and test this function, TESTING each step as you go.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
+    rect.attach_to(window)
+    bottom_right = rect.get_lower_right_corner()
+    top_right = rect.get_upper_right_corner()
+    height = bottom_right.y - top_right.y
+    radius = height / 2
+    for k in range(n):
+        centerx = bottom_right.x + (1.5*radius) * k
+        centery = bottom_right.y + (1.5*radius) * k
+        center = rg.Point(centerx, centery)
+        circle = rg.Circle(center, radius)
+        circle.attach_to(window)
 
-
+    window.render()
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
